@@ -1,6 +1,4 @@
 import streamlit as st
 
-st.title("🎈 Test")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+st.title("🚗 Auto Insurance Company")
+st.info("This is a machine learning app to predict customer lifetime value)
