@@ -13,7 +13,7 @@ with st.sidebar:
   EmploymentStatus = st.selectbox("Employment",("Employed", "Unemployed", "Medical Leave", "Disabled", "Retired"))
   Gender = st.selectbox("Gender",("Male", "Female"))
   Income = st.slider("Income", 10037.00, 99981.00, 34080.00)
-  Location Code = st.selectbox("Location",("Suburban", "Rural", "Urban"))
+  LocationCode = st.selectbox("Location",("Suburban", "Rural", "Urban"))
   Marital Status = st.selectbox("Matiral Status",("Single", "Married", "Divorced"))
   Monthly Premium Auto = st.slider("Monthly Premium", 61.0, 298.0, 83.0)
   Months Since Last Claim = st.slider("Months Since Last Claim", 0, 35, 14)
