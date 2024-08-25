@@ -61,7 +61,7 @@ input_df
 
 # Encoding
 onehot_columns = ['State', 'Response', 'Coverage', 'EmploymentStatus', 'Gender', 'LocationCode', 'MaritalStatus', 'PolicyType', 'Policy', 'RenewOfferType', 'SalesChannel', 'VehicleSize']
-ordinal_columns = ['Education', 'VehicleClass']
+ordinal_columns = ['Education', 'Vehicle Class']
 
 # Define the categories for ordinal encoding
 education_categories = ['High School or Below', 'College', 'Bachelor', 'Master', 'Doctor']
