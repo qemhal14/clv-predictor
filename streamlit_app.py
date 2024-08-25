@@ -26,6 +26,6 @@ with st.sidebar:
   Sales Channel = st.selectbox("Sales Channel",("Agent", "Branch", "Web", "Call Center"))
   Total Claim Amount = st.slider("Total Claim Amount", 0.00, 2893,23, 384.00)
   Vehicle Class = st.selectbox("Vehicle Class",("Four-Door Car", "Two-Door Car", "SUV", "Sports Car", "Luxury SUV", "Luxury Car"))
-  Vehicle Size = st.selectbox('Vehicle Class",("Small", "Medsize", "Large"))
+  Vehicle Size = st.selectbox("Vehicle Class",("Small", "Medsize", "Large"))
   
   
