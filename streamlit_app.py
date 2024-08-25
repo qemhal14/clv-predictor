@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
 
 st.title("🚗 Auto Insurance Company")
 st.info("This is a machine learning app to predict customer lifetime value.")
@@ -54,5 +55,26 @@ st.write("Inputed Single Data for Prediction.")
 input_df = pd.DataFrame(data, index=[0])
 input_df
 
-  
+# Encoding
+onehot_columns = ['State', 'Response', 'Coverage', 'EmploymentStatus', 'Gender', 'LocationCode', 'MaritalStatus', 'PolicyType', 'Policy', 'RenewOfferType', 'SalesChannel', 'VehicleSize']
+ordinal_columns = ['Education', 'VehicleClass']
+
+# Define the categories for ordinal encoding
+education_categories = ['High School or Below', 'College', 'Bachelor', 'Master', 'Doctor']
+vehicle_class_categories = ['Four-Door Car', 'Two-Door Car', 'SUV', 'Sports Car', 'Luxury SUV', 'Luxury Car']
+
+# Ordinal encoding
+ordinal_encoder = OrdinalEncoder(categories=[education_categories, vehicle_class_categories])
+input_df[ordinal_columns] = ordinal_encoder.fit_transform(input_df[ordinal_columns])
+
+# One-hot encoding
+onehot_encoder = OneHotEncoder(sparse=False, drop='first')
+encoded_onehot = onehot_encoder.fit_transform(input_df[onehot_columns])
+encoded_onehot_df = pd.DataFrame(encoded_onehot, columns=onehot_encoder.get_feature_names_out(onehot_columns))
+
+# Drop original columns that were one-hot encoded and concatenate encoded columns
+final_df = pd.concat([input_df.drop(columns=onehot_columns), encoded_onehot_df], axis=1)
+
+st.write("Encoded Data for Prediction:")
+st.write(final_df)  
   
