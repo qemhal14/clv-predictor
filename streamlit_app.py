@@ -6,7 +6,7 @@ st.info("This is a machine learning app to predict customer lifetime value.")
 
 # Manual input for single prediction
 with st.sidebar:
-  st.header("Input Features")
+  st.header("Input Data")
   State = st.selectbox("State",("Arizona", "California", "Nevada", "Oregon", "Washington"))
   Response = st.selectbox("Response",("Yes", "No"))
   Coverage = st.selectbox("Coverage",("Basic", "Premium", "Extended"))
@@ -50,6 +50,7 @@ data = {
   "Vehicle Size":VehicleSize
 }
 
+st.write("Inputed Single Data for Prediction.")
 input_df = pd.DataFrame(data, index=[0])
 input_df
 
