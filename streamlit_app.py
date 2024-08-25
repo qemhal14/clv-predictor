@@ -72,7 +72,7 @@ ordinal_encoder = OrdinalEncoder(categories=[education_categories, vehicle_class
 input_df[ordinal_columns] = ordinal_encoder.fit_transform(input_df[ordinal_columns])
 
 # One-hot encoding
-onehot_encoder = OneHotEncoder(sparse=False, drop='first')
+onehot_encoder = OneHotEncoder(sparse_output=False, drop='first')
 encoded_onehot = onehot_encoder.fit_transform(input_df[onehot_columns])
 encoded_onehot_df = pd.DataFrame(encoded_onehot, columns=onehot_encoder.get_feature_names_out(onehot_columns))
 
