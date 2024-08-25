@@ -69,15 +69,19 @@ vehicle_class_categories = ['Four-Door Car', 'Two-Door Car', 'SUV', 'Sports Car'
 
 # Ordinal encoding
 ordinal_encoder = OrdinalEncoder(categories=[education_categories, vehicle_class_categories])
-input_df[ordinal_columns] = ordinal_encoder.fit_transform(input_df[ordinal_columns])
+encoded_ordinal = ordinal_encoder.fit_transform(input_df[ordinal_columns])
+encoded_ordinal_df = pd.DataFrame(encoded_ordinal)
 
 # One-hot encoding
 onehot_encoder = OneHotEncoder(sparse_output=False, drop='first')
 encoded_onehot = onehot_encoder.fit_transform(input_df[onehot_columns])
 encoded_onehot_df = pd.DataFrame(encoded_onehot, columns=onehot_encoder.get_feature_names_out(onehot_columns))
 
+# Remaining column
+remaining_df = input_df[['Income', 'Monthly Premium Auto', 'Months Since Last Claim', 'Months Since Policy Inception', 'Number of Open Complaints', 'Number of Policies', 'Total Claim Amount']]
+
 # Combine original non-encoded columns with the encoded one-hot columns
-final_df = pd.concat([input_df.drop(columns=[onehot_columns, ordinal_columns]), encoded_onehot_df], axis=1)
+final_df = pd.concat([encoded_ordinal_df.reset_index(drop=True), encoded_onehot_df.reset_index(drop=True), remaining_df.reset_index(drop=True)], axis=1)
 
 st.write("Encoded Data for Prediction:")
 st.write(final_df)
