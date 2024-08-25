@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.title("🚗 Auto Insurance Company")
 st.info("This is a machine learning app to predict customer lifetime value.")
@@ -27,5 +28,30 @@ with st.sidebar:
   TotalClaimAmount = st.slider("Total Claim Amount", 0.00, 2893.23, 384.00)
   VehicleClass = st.selectbox("Vehicle Class",("Four-Door Car", "Two-Door Car", "SUV", "Sports Car", "Luxury SUV", "Luxury Car"))
   VehicleSize = st.selectbox("Vehicle Class",("Small", "Medsize", "Large"))
+
+# Create Dataframe for Input Features
+data = {
+  "State":State,
+  "Response":Response,
+  "Coverage":Coverage,
+  "Education":Education,
+  "EmpoymentStatus":EmploymentStatus,
+  "Monthly Premium Auto":MonthlyPremiumAuto,
+  "Months Since Last Claim":MonthsSinceLastClaim,
+  "Months Since Policy Inception":MonthsSincePolicyInception,
+  "Number of Open Complaints":NumberofOpenComplaints,
+  "Number of Policies":NumberofPolicies,
+  "Policy Type":PolicyType,
+  "Policy":Policy,
+  "Renew Offer Type":RenewOfferType,
+  "Sales Channel":SalesChannel,
+  "Total Claim Amount":TotalClaimAmount,
+  "Vehicle Class":VehicleClass,
+  "Vehicle Size":VehicleSize
+}
+
+input_df = pd.DataFrame(data, index=[0])
+input_df
+
   
   
