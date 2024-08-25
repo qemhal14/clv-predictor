@@ -60,7 +60,7 @@ input_df = pd.DataFrame(data, index=[0])
 input_df
 
 # Encoding
-onehot_columns = ['State', 'Response', 'Coverage', 'EmploymentStatus', 'Gender', 'LocationCode', 'MaritalStatus', 'PolicyType', 'Policy', 'RenewOfferType', 'SalesChannel', 'VehicleSize']
+onehot_columns = ['State', 'Response', 'Coverage', 'EmploymentStatus', 'Gender', 'Location Code', 'Marital Status', 'Policy Type', 'Policy', 'Renew Offer Type', 'Sales Channel', 'Vehicle Size']
 ordinal_columns = ['Education', 'Vehicle Class']
 
 # Define the categories for ordinal encoding
