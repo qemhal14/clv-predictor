@@ -10,6 +10,6 @@ with st.sidebar:
   Response = st.selectbox("Response",("Yes", "No"))
   Coverage = st.selectbox("Coverage",("Basic", "Premium", "Extended"))
   Education = st.selectbox("Education",("High School or Below", "College", "Bachelor", "Master", "Doctor"))
-  Employment = st.selectbox("EmploymentStatus",("Employed", "Unemployed", "Medical Leave", "Disabled", "Retired"))
+  EmploymentStatus = st.selectbox("Employment",("Employed", "Unemployed", "Medical Leave", "Disabled", "Retired"))
   Gender = st.selectbox("Gender",("Male", "Female"))
-  Income = st.slider("Income", 0, 99981.00, 34080.00)
+  Income = st.slider("Income", 10037.00, 99981.00, 34080.00)
