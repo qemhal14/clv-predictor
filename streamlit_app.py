@@ -77,7 +77,7 @@ encoded_onehot = onehot_encoder.fit_transform(input_df[onehot_columns])
 encoded_onehot_df = pd.DataFrame(encoded_onehot, columns=onehot_encoder.get_feature_names_out(onehot_columns))
 
 # Combine original non-encoded columns with the encoded one-hot columns
-final_df = pd.concat([input_df.drop(columns=onehot_columns), encoded_onehot_df], axis=1)
+final_df = pd.concat([input_df.drop(columns=[onehot_columns, ordinal_columns]), encoded_onehot_df], axis=1)
 
 st.write("Encoded Data for Prediction:")
 st.write(final_df)
