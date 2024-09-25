@@ -88,4 +88,4 @@ final_df = pd.concat([encoded_ordinal_df, encoded_onehot_df, remaining_df], axis
 
 st.write("Encoded Data for Prediction:")
 st.write(final_df)
-st.write(encoded_onehot_df.shape)
+st.write(input_df[onehot_columns].isnull().sum())
