@@ -77,8 +77,11 @@ onehot_encoder = OneHotEncoder(sparse_output=False, drop='first')
 encoded_onehot = onehot_encoder.fit_transform(input_df[onehot_columns])
 encoded_onehot_df = pd.DataFrame(encoded_onehot, columns=onehot_encoder.get_feature_names_out(onehot_columns))
 
-# Remaining column
+# Resetting index to avoid issues in concatenation
+encoded_ordinal_df.reset_index(drop=True, inplace=True)
+encoded_onehot_df.reset_index(drop=True, inplace=True)
 remaining_df = input_df[['Income', 'Monthly Premium Auto', 'Months Since Last Claim', 'Months Since Policy Inception', 'Number of Open Complaints', 'Number of Policies', 'Total Claim Amount']]
+remaining_df.reset_index(drop=True, inplace=True)
 
 # Combine original non-encoded columns with the encoded one-hot columns
 final_df = pd.concat([encoded_ordinal_df, encoded_onehot_df, remaining_df], axis=1)
