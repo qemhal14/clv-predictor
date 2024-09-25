@@ -28,7 +28,7 @@ with st.sidebar:
   SalesChannel = st.selectbox("Sales Channel",("Agent", "Branch", "Web", "Call Center"))
   TotalClaimAmount = st.slider("Total Claim Amount", 0.00, 2893.23, 384.00)
   VehicleClass = st.selectbox("Vehicle Class",("Four-Door Car", "Two-Door Car", "SUV", "Sports Car", "Luxury SUV", "Luxury Car"))
-  VehicleSize = st.selectbox("Vehicle Class",("Small", "Medsize", "Large"))
+  VehicleSize = st.selectbox("Vehicle Size",("Small", "Medsize", "Large"))
 
 # Create Dataframe for Input Features
 data = {
