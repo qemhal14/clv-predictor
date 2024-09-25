@@ -70,7 +70,7 @@ vehicle_class_categories = ['Four-Door Car', 'Two-Door Car', 'SUV', 'Sports Car'
 # Ordinal encoding
 ordinal_encoder = OrdinalEncoder(categories=[education_categories, vehicle_class_categories])
 encoded_ordinal = ordinal_encoder.fit_transform(input_df[ordinal_columns])
-encoded_ordinal_df = pd.DataFrame(encoded_ordinal)
+encoded_ordinal_df = pd.DataFrame(encoded_ordinal, columns=ordinal_columns)
 
 # One-hot encoding
 onehot_encoder = OneHotEncoder(sparse_output=False, drop='first')
