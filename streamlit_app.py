@@ -79,5 +79,4 @@ preprocessor = ColumnTransformer(
 # Apply transformations
 final_df = pd.DataFrame(preprocessor.fit_transform(input_df), columns=preprocessor.get_feature_names_out())
 
-st.write("Encoded Data for Prediction:")
-st.write(final_df)
+
