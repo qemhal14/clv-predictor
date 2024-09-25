@@ -73,7 +73,7 @@ encoded_ordinal = ordinal_encoder.fit_transform(input_df[ordinal_columns])
 encoded_ordinal_df = pd.DataFrame(encoded_ordinal, columns=ordinal_columns)
 
 # One-hot encoding
-onehot_encoder = OneHotEncoder(drop='first')
+onehot_encoder = OneHotEncoder(drop='first', sparse_output=False)
 encoded_onehot = onehot_encoder.fit_transform(input_df[onehot_columns])
 encoded_onehot_df = pd.DataFrame(encoded_onehot)
 
