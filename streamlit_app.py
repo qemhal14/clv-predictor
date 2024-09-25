@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
+from sklearn.compose import ColumnTransformer
 
 st.title("🚗 Auto Insurance Company")
 st.info("This is a machine learning app to predict customer lifetime value.")
