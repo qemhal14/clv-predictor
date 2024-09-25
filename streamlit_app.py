@@ -80,4 +80,13 @@ preprocessor = ColumnTransformer(
 # Apply transformations
 final_df = pd.DataFrame(preprocessor.fit_transform(input_df), columns=preprocessor.get_feature_names_out())
 
+with open("CLV Predictor.pkl", "rb") as m:
+    model = pickel.load(m)
+
+# Make prediction
+prediction = model.predict(final_df)
+
+# Display the result
+st.subheader("Predicted Customer Lifetime Value")
+st.write(f"Predicted CLV: ${prediction[0]:,.2f}")
 
