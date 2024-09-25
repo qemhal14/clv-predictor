@@ -81,7 +81,7 @@ encoded_onehot_df = pd.DataFrame(encoded_onehot, columns=onehot_encoder.get_feat
 remaining_df = input_df[['Income', 'Monthly Premium Auto', 'Months Since Last Claim', 'Months Since Policy Inception', 'Number of Open Complaints', 'Number of Policies', 'Total Claim Amount']]
 
 # Combine original non-encoded columns with the encoded one-hot columns
-final_df = pd.concat([encoded_ordinal_df.reset_index(drop=True), encoded_onehot_df.reset_index(drop=True), remaining_df.reset_index(drop=True)], axis=1)
+final_df = pd.concat([encoded_ordinal_df, encoded_onehot_df, remaining_df], axis=1)
 
 st.write("Encoded Data for Prediction:")
 st.write(final_df)
