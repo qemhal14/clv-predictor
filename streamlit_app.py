@@ -67,25 +67,16 @@ ordinal_columns = ['Education', 'Vehicle Class']
 education_categories = ['High School or Below', 'College', 'Bachelor', 'Master', 'Doctor']
 vehicle_class_categories = ['Four-Door Car', 'Two-Door Car', 'SUV', 'Sports Car', 'Luxury SUV', 'Luxury Car']
 
-# Ordinal encoding
-ordinal_encoder = OrdinalEncoder(categories=[education_categories, vehicle_class_categories])
-encoded_ordinal = ordinal_encoder.fit_transform(input_df[ordinal_columns])
-encoded_ordinal_df = pd.DataFrame(encoded_ordinal, columns=ordinal_columns)
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('onehot', OneHotEncoder(drop='first', sparse_output=False), onehot_columns),
+        ('ordinal', OrdinalEncoder(categories=[education_categories, vehicle_class_categories]), ordinal_columns)
+    ],
+    remainder='passthrough'  # This keeps the remaining numerical columns
+)
 
-# One-hot encoding
-onehot_encoder = OneHotEncoder(drop='first', sparse_output=False)
-encoded_onehot = onehot_encoder.fit_transform(input_df[onehot_columns])  # Convert to dense array
-encoded_onehot_df = pd.DataFrame(encoded_onehot, columns=onehot_encoder.get_feature_names_out(onehot_columns))
-
-# Resetting index to avoid issues in concatenation
-# encoded_ordinal_df.reset_index(drop=True, inplace=True)
-# encoded_onehot_df.reset_index(drop=True, inplace=True)
-remaining_df = input_df[['Income', 'Monthly Premium Auto', 'Months Since Last Claim', 'Months Since Policy Inception', 'Number of Open Complaints', 'Number of Policies', 'Total Claim Amount']]
-# remaining_df.reset_index(drop=True, inplace=True)
-
-# Combine all encoded columns and the remaining numeric columns
-final_df = pd.concat([encoded_ordinal_df, encoded_onehot_df, remaining_df], axis=1)
+# Apply transformations
+final_df = pd.DataFrame(preprocessor.fit_transform(input_df), columns=preprocessor.get_feature_names_out())
 
 st.write("Encoded Data for Prediction:")
 st.write(final_df)
-st.write(input_df[onehot_columns].isnull().sum())
