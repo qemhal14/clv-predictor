@@ -83,7 +83,6 @@ remaining_df = input_df[['Income', 'Monthly Premium Auto', 'Months Since Last Cl
 # Combine original non-encoded columns with the encoded one-hot columns
 final_df = pd.concat([encoded_ordinal_df, encoded_onehot_df, remaining_df], axis=1)
 
-st.write("Encoded Data for Prediction:")
-final_df
+# st.write("Encoded Data for Prediction:")
 
   
