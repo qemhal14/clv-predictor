@@ -81,7 +81,7 @@ preprocessor = ColumnTransformer(
 final_df = pd.DataFrame(preprocessor.fit_transform(input_df), columns=preprocessor.get_feature_names_out())
 
 with open("CLV Predictor.pkl", "rb") as m:
-    model = pickel.load(m)
+    model = pickle.load(m)
 
 # Make prediction
 prediction = model.predict(final_df)
