@@ -89,4 +89,5 @@ remaining_df = input_df[['Income', 'Monthly Premium Auto', 'Months Since Last Cl
 final_df = pd.concat([encoded_ordinal_df, encoded_onehot_df, remaining_df], axis=1)
 
 st.write("Encoded Data for Prediction:")
+st.dataframe(final_df.iloc[:, :10])
 st.write(final_df)
