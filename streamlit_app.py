@@ -87,6 +87,6 @@ remaining_df.reset_index(drop=True, inplace=True)
 final_df = pd.concat([encoded_onehot_df, encoded_ordinal_df, remaining_df], axis=1)
 
 st.write("Encoded Data for Prediction:")
-st.write(encoded_onehot_df)
+st.write(encoded_onehot)
 st.write(final_df)
   
