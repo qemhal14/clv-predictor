@@ -75,8 +75,6 @@ encoded_ordinal_df = pd.DataFrame(encoded_ordinal, columns=ordinal_columns)
 # One-hot encoding
 onehot_encoder = OneHotEncoder(drop='first', sparse_output=False)
 encoded_onehot = onehot_encoder.fit_transform(input_df[onehot_columns])  # Convert to dense array
-
-# Create a DataFrame from the one-hot encoded data
 encoded_onehot_df = pd.DataFrame(encoded_onehot, columns=onehot_encoder.get_feature_names_out(onehot_columns))
 
 # Resetting index to avoid issues in concatenation
@@ -89,5 +87,5 @@ remaining_df = input_df[['Income', 'Monthly Premium Auto', 'Months Since Last Cl
 final_df = pd.concat([encoded_ordinal_df, encoded_onehot_df, remaining_df], axis=1)
 
 st.write("Encoded Data for Prediction:")
-st.dataframe(final_df.iloc[:, :10])
 st.write(final_df)
+print(encoded_onehot_df.shape)
