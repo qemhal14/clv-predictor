@@ -15,7 +15,7 @@ with st.sidebar:
     Coverage = st.selectbox("Coverage", ("Basic", "Premium", "Extended"))
     Education = st.selectbox("Education", ("High School or Below", "College", "Bachelor", "Master", "Doctor"))
     EmploymentStatus = st.selectbox("Employment", ("Employed", "Unemployed", "Medical Leave", "Disabled", "Retired"))
-    Gender = st.selectbox("Gender", ("Male", "Female"))
+    Gender = st.selectbox("Gender", ("M", "F"))
     Income = st.slider("Income", 10037, 99981, 34080)
     LocationCode = st.selectbox("Location", ("Suburban", "Rural", "Urban"))
     MaritalStatus = st.selectbox("Marital Status", ("Single", "Married", "Divorced"))
