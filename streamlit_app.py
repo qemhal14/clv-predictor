@@ -61,35 +61,35 @@ st.write("Inputted Single Data for Prediction.")
 input_df = pd.DataFrame(data, index=[0])
 st.write(input_df)
 
-# Encoding
-onehot_columns = ['State', 'Response', 'Coverage', 'EmploymentStatus', 'Gender', 'Location Code', 'Marital Status', 'Policy Type', 'Policy', 'Renew Offer Type', 'Sales Channel', 'Vehicle Size']
-ordinal_columns = ['Education', 'Vehicle Class']
+# # Encoding
+# onehot_columns = ['State', 'Response', 'Coverage', 'EmploymentStatus', 'Gender', 'Location Code', 'Marital Status', 'Policy Type', 'Policy', 'Renew Offer Type', 'Sales Channel', 'Vehicle Size']
+# ordinal_columns = ['Education', 'Vehicle Class']
 
-# Define the categories for ordinal encoding
-education_categories = ['High School or Below', 'College', 'Bachelor', 'Master', 'Doctor']
-vehicle_class_categories = ['Four-Door Car', 'Two-Door Car', 'SUV', 'Sports Car', 'Luxury SUV', 'Luxury Car']
+# # Define the categories for ordinal encoding
+# education_categories = ['High School or Below', 'College', 'Bachelor', 'Master', 'Doctor']
+# vehicle_class_categories = ['Four-Door Car', 'Two-Door Car', 'SUV', 'Sports Car', 'Luxury SUV', 'Luxury Car']
 
-preprocessor = ColumnTransformer(
-    transformers=[
-        ('onehot', OneHotEncoder(drop='first', sparse_output=False), onehot_columns),
-        ('ordinal', OrdinalEncoder(categories=[education_categories, vehicle_class_categories]), ordinal_columns)
-    ],
-    remainder='passthrough'  # This keeps the remaining numerical columns
-)
+# preprocessor = ColumnTransformer(
+#     transformers=[
+#         ('onehot', OneHotEncoder(drop='first', sparse_output=False), onehot_columns),
+#         ('ordinal', OrdinalEncoder(categories=[education_categories, vehicle_class_categories]), ordinal_columns)
+#     ],
+#     remainder='passthrough'  # This keeps the remaining numerical columns
+# )
 
-# Apply transformations
-final_df = pd.DataFrame(preprocessor.transform(input_df), columns=preprocessor.get_feature_names_out())
+# # Apply transformations
+# final_df = pd.DataFrame(preprocessor.transform(input_df), columns=preprocessor.get_feature_names_out())
 
-# Ensure column names match expected features
-st.write("Transformed Columns:")
-st.write(final_df.columns)
+# # Ensure column names match expected features
+# st.write("Transformed Columns:")
+# st.write(final_df.columns)
 
 # Load the trained model
 with open("CLV Predictor.pkl", "rb") as m:
     model = pickle.load(m)
 
 # Make prediction
-prediction = model.predict(final_df)
+prediction = model.predict(input_df)
 
 # Display the result
 st.subheader("Predicted Customer Lifetime Value")
