@@ -16,10 +16,10 @@ with st.sidebar:
     Education = st.selectbox("Education", ("High School or Below", "College", "Bachelor", "Master", "Doctor"))
     EmploymentStatus = st.selectbox("Employment", ("Employed", "Unemployed", "Medical Leave", "Disabled", "Retired"))
     Gender = st.selectbox("Gender", ("Male", "Female"))
-    Income = st.slider("Income", 10037.00, 99981.00, 34080.00)
+    Income = st.slider("Income", 10037, 99981, 34080)
     LocationCode = st.selectbox("Location", ("Suburban", "Rural", "Urban"))
     MaritalStatus = st.selectbox("Marital Status", ("Single", "Married", "Divorced"))
-    MonthlyPremiumAuto = st.slider("Monthly Premium", 61.0, 298.0, 83.0)
+    MonthlyPremiumAuto = st.slider("Monthly Premium", 61, 298, 83)
     MonthsSinceLastClaim = st.slider("Months Since Last Claim", 0, 35, 14)
     MonthsSincePolicyInception = st.slider("Months Since Policy Inception", 0, 99, 48)
     NumberofOpenComplaints = st.slider("Number of Open Complaints", 0, 5, 1)
@@ -84,17 +84,15 @@ st.write(input_df)
 # st.write("Transformed Columns:")
 # st.write(final_df.columns)
 
-st.write(input_df.info())
+# Load the trained model
+with open("CLV Predictor.pkl", "rb") as m:
+    model = pickle.load(m)
 
-# # Load the trained model
-# with open("CLV Predictor.pkl", "rb") as m:
-#     model = pickle.load(m)
+# Make prediction
+prediction = model.predict(input_df)
 
-# # Make prediction
-# prediction = model.predict(input_df)
-
-# # Display the result
-# st.subheader("Predicted Customer Lifetime Value")
-# st.write(f"Predicted CLV: ${prediction[0]:,.2f}")
+# Display the result
+st.subheader("Predicted Customer Lifetime Value")
+st.write(f"Predicted CLV: ${prediction[0]:,.2f}")
 
 
