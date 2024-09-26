@@ -85,7 +85,7 @@ st.write(input_df)
 # st.write(final_df.columns)
 
 # Load the trained model
-model = pickle.load(open("CLV Predictor.pkl", "rb")
+model = pickle.load(open("CLV Predictor.pkl", "rb"))
 
 # Make prediction
 prediction = model.predict(input_df)
