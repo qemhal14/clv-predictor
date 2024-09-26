@@ -58,7 +58,7 @@ data = {
 }
 
 st.write("Inputted Single Data for Prediction.")
-input_df = pd.DataFrame(data, index=[0])
+input_df = pd.DataFrame(data)
 st.write(input_df)
 
 # # Encoding
@@ -85,8 +85,7 @@ st.write(input_df)
 # st.write(final_df.columns)
 
 # Load the trained model
-with open("CLV Predictor.pkl", "rb") as m:
-    model = pickle.load(m)
+model = pickle.load(open("CLV Predictor.pkl", "rb)
 
 # Make prediction
 prediction = model.predict(input_df)
