@@ -65,7 +65,7 @@ st.write(input_df)
 model = pickle.load(open("CLV Predictor.pkl", "rb"))
 
 # Check the expected categories from the model
-transformer = model.named_steps['preprocessor']
+transformer = model.named_steps['preprocess']
 expected_columns = transformer.transformers_[0][1].categories_
 st.write("Expected categories for each column:")
 st.write(expected_columns)
