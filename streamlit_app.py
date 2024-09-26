@@ -84,15 +84,17 @@ st.write(input_df)
 # st.write("Transformed Columns:")
 # st.write(final_df.columns)
 
-# Load the trained model
-with open("CLV Predictor.pkl", "rb") as m:
-    model = pickle.load(m)
+st.write(input_df.info())
 
-# Make prediction
-prediction = model.predict(input_df)
+# # Load the trained model
+# with open("CLV Predictor.pkl", "rb") as m:
+#     model = pickle.load(m)
 
-# Display the result
-st.subheader("Predicted Customer Lifetime Value")
-st.write(f"Predicted CLV: ${prediction[0]:,.2f}")
+# # Make prediction
+# prediction = model.predict(input_df)
+
+# # Display the result
+# st.subheader("Predicted Customer Lifetime Value")
+# st.write(f"Predicted CLV: ${prediction[0]:,.2f}")
 
 
