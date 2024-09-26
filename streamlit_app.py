@@ -58,7 +58,7 @@ data = {
 }
 
 st.write("Inputted Single Data for Prediction.")
-input_df = pd.DataFrame(data)
+input_df = pd.DataFrame(data, index=[0])
 st.write(input_df)
 
 # # Encoding
