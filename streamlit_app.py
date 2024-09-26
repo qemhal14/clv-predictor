@@ -78,8 +78,13 @@ preprocessor = ColumnTransformer(
 )
 
 # Apply transformations
-final_df = pd.DataFrame(preprocessor.fit_transform(input_df), columns=preprocessor.get_feature_names_out())
+final_df = pd.DataFrame(preprocessor.transform(input_df), columns=preprocessor.get_feature_names_out())
 
+# Ensure column names match expected features
+st.write("Transformed Columns:")
+st.write(final_df.columns)
+
+# Load the trained model
 with open("CLV Predictor.pkl", "rb") as m:
     model = pickle.load(m)
 
@@ -89,4 +94,5 @@ prediction = model.predict(final_df)
 # Display the result
 st.subheader("Predicted Customer Lifetime Value")
 st.write(f"Predicted CLV: ${prediction[0]:,.2f}")
+
 
