@@ -5,11 +5,48 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
 from sklearn.compose import ColumnTransformer
 import pickle
 
-st.title("🚗 Auto Insurance Company")
-st.info("This is a machine learning app to predict customer lifetime value.")
+# Custom styles for the app
+st.markdown("""
+    <style>
+    body {
+        background-color: #f5f5f5;
+        font-family: 'Arial', sans-serif;
+    }
+    .main-container {
+        max-width: 1200px;
+        padding: 20px;
+    }
+    .sidebar .sidebar-content {
+        background-color: #a3cce9;
+        color: white;
+    }
+    .stButton>button {
+        background-color: #005082;
+        color: white;
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
+    }
+    .stButton>button:hover {
+        background-color: #003b5c;
+    }
+    .predicted-value {
+        border: 2px solid #005082;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: white;
+        color: #005082;
+        font-weight: bold;
+        text-align: center;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
-st.subheader("Dashboard")
-# Embed Tableau dashboard using the provided code
+st.title("🚗 Auto Insurance Company")
+st.info("This is a machine learning app to predict customer lifetime value (CLV).")
+
+st.subheader("📊 Dashboard")
+# Embed Tableau dashboard
 html_code = """
 <div class='tableauPlaceholder' id='viz1728219711852' style='position: relative'>
     <noscript><a href='#'>
@@ -47,13 +84,12 @@ html_code = """
     vizElement.parentNode.insertBefore(scriptElement, vizElement);
 </script>
 """
-
 # Use Streamlit's components.html() to embed the Tableau dashboard
 st.components.v1.html(html_code, width=1000, height=800, scrolling=True)
 
-# Manual input for single prediction
+# Sidebar for manual input
 with st.sidebar:
-    st.header("Input Data")
+    st.header("📋 Input Data")
     State = st.selectbox("State", ("Arizona", "California", "Nevada", "Oregon", "Washington"))
     Response = st.selectbox("Response", ("Yes", "No"))
     Coverage = st.selectbox("Coverage", ("Basic", "Premium", "Extended"))
@@ -101,7 +137,7 @@ data = {
     "Vehicle Size": VehicleSize
 }
 
-st.subheader("Inputted Single Data for CLV Estimation.")
+st.subheader("📝 Inputted Single Data for CLV Estimation")
 input_df = pd.DataFrame(data, index=[0])
 st.write(input_df)
 
@@ -112,12 +148,12 @@ model = pickle.load(open("CLV Predictor.pkl", "rb"))
 try:
     prediction = model.predict(input_df)
     
-    # Use markdown with HTML/CSS to style the prediction
-    st.subheader("Estimate Customer Lifetime Value")
+    # Styled prediction result
+    st.subheader("Estimated Customer Lifetime Value")
     st.markdown(
         f"""
-        <div style="border: 2px solid #4CAF50; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">
-            <strong style="font-size: 24px; color: #4CAF50;">Predicted CLV: ${prediction[0]:,.2f}</strong>
+        <div class="predicted-value">
+            Predicted CLV: ${prediction[0]:,.2f}
         </div>
         """, 
         unsafe_allow_html=True
@@ -125,5 +161,3 @@ try:
     
 except ValueError as e:
     st.error(f"Error during prediction: {e}")
-
-
