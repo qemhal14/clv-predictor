@@ -10,7 +10,8 @@ st.info("This is a machine learning app to predict customer lifetime value.")
 
 st.title("Dashboard")
 components.iframe(
-    "https://public.tableau.com/views/FinproDashboard_17237922279380/CustomerOverview?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+    "https://public.tableau.com/shared/BSQHY4M7C?:display_count=n&:origin=viz_share_link",
+    width=1366, height=768
 )
 
 # Manual input for single prediction
