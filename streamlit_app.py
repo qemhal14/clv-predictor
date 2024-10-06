@@ -8,7 +8,7 @@ import pickle
 st.title("🚗 Auto Insurance Company")
 st.info("This is a machine learning app to predict customer lifetime value.")
 
-st.title("Dashboard")
+st.subheader("Dashboard")
 html_code = """
 <div class='tableauPlaceholder' id='viz1728219711852' style='position: relative'>
     <noscript><a href='#'>
@@ -100,7 +100,7 @@ data = {
     "Vehicle Size": VehicleSize
 }
 
-st.write("Inputted Single Data for Prediction.")
+st.subheader("Inputted Single Data for CLV Estimation.")
 input_df = pd.DataFrame(data, index=[0])
 st.write(input_df)
 
