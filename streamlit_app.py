@@ -113,7 +113,7 @@ try:
     prediction = model.predict(input_df)
     
     # Use markdown with HTML/CSS to style the prediction
-    st.subheader("Predicted Customer Lifetime Value")
+    st.subheader("Estimate Customer Lifetime Value")
     st.markdown(
         f"""
         <div style="border: 2px solid #4CAF50; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">
