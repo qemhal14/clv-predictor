@@ -8,6 +8,7 @@ import pickle
 st.title("🚗 Auto Insurance Company")
 st.info("This is a machine learning app to predict customer lifetime value.")
 
+st.subheader("Dashboard")
 # Embed Tableau dashboard using the provided code
 html_code = """
 <div class='tableauPlaceholder' id='viz1728219711852' style='position: relative'>
@@ -48,7 +49,7 @@ html_code = """
 """
 
 # Use Streamlit's components.html() to embed the Tableau dashboard
-st.components.v1.html(html_code, height=1200, scrolling=True)
+st.components.v1.html(html_code, width=1000, scrolling=True)
 
 # Manual input for single prediction
 with st.sidebar:
