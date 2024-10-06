@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
 from sklearn.compose import ColumnTransformer
@@ -6,6 +7,14 @@ import pickle
 
 st.title("🚗 Auto Insurance Company")
 st.info("This is a machine learning app to predict customer lifetime value.")
+
+st.title("Dashboard")
+components.html(
+  """
+  <iframe src="https://public.tableau.com/views/FinproDashboard_17237922279380/CustomerOverview?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+    width="1366" height="768">
+  </iframe>
+  """
 
 # Manual input for single prediction
 with st.sidebar:
