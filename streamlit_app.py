@@ -8,49 +8,47 @@ import pickle
 st.title("🚗 Auto Insurance Company")
 st.info("This is a machine learning app to predict customer lifetime value.")
 
-# Embed Tableau dashboard with scrollable container
+# Embed Tableau dashboard using the provided code
 html_code = """
-<div style="width:100%; height:100%; overflow:auto;">
-    <div class='tableauPlaceholder' id='viz1728219711852' style='position: relative'>
-        <noscript><a href='#'>
-            <img alt='Customer Overview' src='https://public.tableau.com/static/images/Fi/FinproDashboard_17237922279380/CustomerOverview/1_rss.png' style='border: none' />
-        </a></noscript>
-        <object class='tableauViz' style='display:none;'>
-            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-            <param name='embed_code_version' value='3' /> 
-            <param name='path' value='views/FinproDashboard_17237922279380/CustomerOverview?:language=en-US&:embed=true&:sid=&:redirect=auth' /> 
-            <param name='toolbar' value='yes' />
-            <param name='static_image' value='https://public.tableau.com/static/images/Fi/FinproDashboard_17237922279380/CustomerOverview/1.png' /> 
-            <param name='animate_transition' value='yes' />
-            <param name='display_static_image' value='yes' />
-            <param name='display_spinner' value='yes' />
-            <param name='display_overlay' value='yes' />
-            <param name='display_count' value='yes' />
-            <param name='language' value='en-US' />
-        </object>
-    </div>
-    <script type='text/javascript'>
-        var divElement = document.getElementById('viz1728219711852');
-        var vizElement = divElement.getElementsByTagName('object')[0];
-        if (divElement.offsetWidth > 800) { 
-            vizElement.style.width='1366px'; 
-            vizElement.style.height='795px'; 
-        } else if (divElement.offsetWidth > 500) { 
-            vizElement.style.width='1366px'; 
-            vizElement.style.height='795px'; 
-        } else { 
-            vizElement.style.width='100%'; 
-            vizElement.style.height='2877px'; 
-        } 
-        var scriptElement = document.createElement('script');
-        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-        vizElement.parentNode.insertBefore(scriptElement, vizElement);
-    </script>
+<div class='tableauPlaceholder' id='viz1728219711852' style='position: relative'>
+    <noscript><a href='#'>
+        <img alt='Customer Overview' src='https://public.tableau.com/static/images/Fi/FinproDashboard_17237922279380/CustomerOverview/1_rss.png' style='border: none' />
+    </a></noscript>
+    <object class='tableauViz' style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+        <param name='embed_code_version' value='3' /> 
+        <param name='path' value='views/FinproDashboard_17237922279380/CustomerOverview?:language=en-US&:embed=true&:sid=&:redirect=auth' /> 
+        <param name='toolbar' value='yes' />
+        <param name='static_image' value='https://public.tableau.com/static/images/Fi/FinproDashboard_17237922279380/CustomerOverview/1.png' /> 
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en-US' />
+    </object>
 </div>
+<script type='text/javascript'>
+    var divElement = document.getElementById('viz1728219711852');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+    if (divElement.offsetWidth > 800) { 
+        vizElement.style.width='1366px'; 
+        vizElement.style.height='795px'; 
+    } else if (divElement.offsetWidth > 500) { 
+        vizElement.style.width='1366px'; 
+        vizElement.style.height='795px'; 
+    } else { 
+        vizElement.style.width='100%'; 
+        vizElement.style.height='2877px'; 
+    } 
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
 """
 
-# Use Streamlit's components.html() to embed the Tableau dashboard and make it scrollable
-st.components.v1.html(html_code, width=1366, height=768)
+# Use Streamlit's components.html() to embed the Tableau dashboard
+st.components.v1.html(html_code, height=800, scrolling=True)
 
 # Manual input for single prediction
 with st.sidebar:
