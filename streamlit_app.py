@@ -15,6 +15,7 @@ components.html(
     width="1366" height="768">
   </iframe>
   """
+)
 
 # Manual input for single prediction
 with st.sidebar:
