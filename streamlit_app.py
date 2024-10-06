@@ -9,7 +9,7 @@ st.title("🚗 Auto Insurance Company")
 st.info("This is a machine learning app to predict customer lifetime value.")
 
 st.title("Dashboard")
-components.html(
+components.iframe(
   """
   <iframe src="https://public.tableau.com/views/FinproDashboard_17237922279380/CustomerOverview?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
     width="1366" height="768">
