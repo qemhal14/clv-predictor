@@ -48,7 +48,7 @@ html_code = """
 """
 
 # Use Streamlit's components.html() to embed the Tableau dashboard
-st.components.v1.html(html_code, height=800)
+st.components.v1.html(html_code, width=1366, height=768)
 
 # Manual input for single prediction
 with st.sidebar:
