@@ -110,8 +110,18 @@ model = pickle.load(open("CLV Predictor.pkl", "rb"))
 # Predict the CLV
 try:
     prediction = model.predict(input_df)
+    
+    # Use markdown with HTML/CSS to style the prediction
     st.subheader("Predicted Customer Lifetime Value")
-    st.write(f"Predicted CLV: ${prediction[0]:,.2f}")
+    st.markdown(
+        f"""
+        <div style="border: 2px solid #4CAF50; padding: 10px; border-radius: 5px; background-color: #f9f9f9;">
+            <strong style="font-size: 24px; color: #4CAF50;">Predicted CLV: ${prediction[0]:,.2f}</strong>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+    
 except ValueError as e:
     st.error(f"Error during prediction: {e}")
 
